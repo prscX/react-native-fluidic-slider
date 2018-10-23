@@ -6,13 +6,41 @@ import { requireNativeComponent } from "react-native";
 
 class RNFluidicSlider extends Component {
   static propTypes = {
-    ...ViewPropTypes
+    ...ViewPropTypes,
+
+    min: PropTypes.number,
+    max: PropTypes.number,
+
+    initialPosition: PropTypes.number,
+
+    barColor: PropTypes.string,
+    bubbleColor: PropTypes.string,
+    barTextColor: PropTypes.string,
+    bubbleTextColor: PropTypes.string
   };
 
-  static defaultProps = {};
+  static defaultProps = {
+    min: 0,
+    max: 100,
+
+    initialPosition: .5,
+
+    barColor: '#6168e7',
+    bubbleColor: '#FFFFFF',
+    barTextColor: '#FFFFFF',
+    bubbleTextColor: '#000000'
+  };
+
+  _onChange = (event, position) => {
+    console.log('Event: ' + event.nativeEvent.event + ', Position: ' + event.nativeEvent.value)
+    // this.props.onChange && this.props.onChange(event.nativeEvent.value);
+  };
 
   render() {
-    return <FluidicSlider style={{width: 500, height: 50, backgroundColor: '#000000'}} />;
+    return <FluidicSlider style={{width: '100%', height: '100%'}}
+      onChange={this._onChange}
+      {...this.props}
+    />;
   }
 }
 

@@ -30,19 +30,23 @@ This library is a React Native bridge around native fluid slider libraries. It a
 ```
 buildscript {
     repositories {
-        jcenter()
+        google()
         maven { url "https://maven.google.com" }
-        maven { url "https://jitpack.io" }
+        jcenter()
         ...
     }
 }
 
 allprojects {
     repositories {
+        google()
         mavenLocal()
+        maven { url 'https://jitpack.io' }
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
         jcenter()
-        maven { url "https://maven.google.com" }
-        maven { url "https://jitpack.io" }
         ...
     }
 }

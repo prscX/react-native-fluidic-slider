@@ -21,7 +21,8 @@ import kotlin.jvm.functions.Function1;
 public class RNFluidicSlider extends ViewGroupManager<ViewGroup> {
 
     public static final String REACT_CLASS = "RNFluidicSlider";
-    private float position;
+    private float _position;
+    private float _initialPosition;
 
     @Override
     public String getName() {
@@ -36,17 +37,18 @@ public class RNFluidicSlider extends ViewGroupManager<ViewGroup> {
 
         FluidSlider slider = (FluidSlider) constraintLayout.getViewById(R.id.fluidSlider);
 
-//        int id = constraintLayout.getId();
-//        reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher().dispatchEvent(
-//                new RNFluidicSliderEvent(id, selection)
-//        );
-
         slider.setBeginTrackingListener(new Function0<Unit>() {
             @Override
             public Unit invoke() {
                 int id = constraintLayout.getId();
+                float position = _initialPosition;
+
+                if (_initialPosition != _position) {
+                    position = _position;
+                }
+
                 reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher().dispatchEvent(
-                        new px.fluidicslider.RNFluidicSliderEvent(id, "beginTrackingListener", 0)
+                        new px.fluidicslider.RNFluidicSliderEvent(id, "beginTracking", position)
                 );
 
                 return Unit.INSTANCE;
@@ -56,7 +58,7 @@ public class RNFluidicSlider extends ViewGroupManager<ViewGroup> {
         slider.setPositionListener(new Function1<Float, Unit>() {
             @Override
             public Unit invoke(Float pos) {
-                position = pos;
+                _position = pos;
 
                 return Unit.INSTANCE;
             }
@@ -67,14 +69,12 @@ public class RNFluidicSlider extends ViewGroupManager<ViewGroup> {
             public Unit invoke() {
                 int id = constraintLayout.getId();
                 reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher().dispatchEvent(
-                        new px.fluidicslider.RNFluidicSliderEvent(id, "endTrackingListener", position)
+                        new px.fluidicslider.RNFluidicSliderEvent(id, "endTracking", _position)
                 );
 
                 return Unit.INSTANCE;
             }
         });
-
-
 
         return constraintLayout;
     }
@@ -97,7 +97,8 @@ public class RNFluidicSlider extends ViewGroupManager<ViewGroup> {
         FluidSlider slider = (FluidSlider) layout.getChildAt(0);
         slider.setPosition(initialPosition);
 
-        position = initialPosition;
+        _position = initialPosition;
+        _initialPosition = initialPosition;
     }
 
 

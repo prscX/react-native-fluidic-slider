@@ -47,6 +47,7 @@ public class RNFluidicSliderEvent extends Event<RNFluidicSliderEvent> {
         eventData.putInt("target", getViewTag());
         eventData.putDouble("value", getSelection());
         eventData.putString("event", getEvent());
+
         return eventData;
     }
 }

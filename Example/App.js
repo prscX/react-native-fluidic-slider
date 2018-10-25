@@ -20,11 +20,13 @@ const instructions = Platform.select({
 type Props = {};
 export default class App extends Component<Props> {
   render() {
-    return (
-      <View style={styles.container}>
-        <RNFluidicSlider></RNFluidicSlider>
-      </View>
-    );
+    return <View style={styles.container}>
+        <RNFluidicSlider min={10} max={120} beginTracking={(pos) => {
+          console.log('start tracking: ' + pos)
+      }} endTracking={(pos) => {
+        console.log("end tracking: " + pos);
+      }} />
+      </View>;
   }
 }
 

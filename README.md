@@ -83,8 +83,8 @@ import { RNFluidicSlider } from 'react-native-fluidic-slider'
 | `bubbleColor`     | `string: HEX_COLOR`            |    `#FFFFFF`     | Specify bubble color                 |
 | `barTextColor`     | `string: HEX_COLOR`            |    `#FFFFFF`     | Specify bar text color                 |
 | `bubbleTextColor`     | `string: HEX_COLOR`            |    `#000000`     | Specify bubble text color                 |
-| `beginTracking`     | `string: HEX_COLOR`            |    `#000000`     | Specify bubble text color                 |
-| `endTracking`     | `string: HEX_COLOR`            |    `#000000`     | Specify bubble text color                 |
+| `beginTracking`     | `func`            |         | Specify callback function for begin tracking                 |
+| `endTracking`     | `func`            |         | Specify callback function for end tracking                 |
 
 
 ## ✨ Credits

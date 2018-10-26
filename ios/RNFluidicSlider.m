@@ -11,19 +11,38 @@ RCT_EXPORT_MODULE()
 
 - (Slider *)view {
     Slider *slider = [[Slider alloc] init];
+//    [slider addTarget:self
+//                     action:@selector(sliderValueChanged:)
+//           forControlEvents:UIControlEventValueChanged];
+
     
-//    [slider setMinimumLabelAttributedText: [[NSMutableAttributedString alloc] initWithString:@"100"]];
-//    [slider setMaximumLabelAttributedText: [[NSMutableAttributedString alloc] initWithString:@"500"]];
-//    slider.fraction = 0.5;
-//    slider.shadowOffset = CGSizeMake(0, 10);
-//    slider.shadowBlur = 50;
-//    slider.shadowColor = UIColor.whiteColor;
-//    slider.contentViewColor = UIColor.blueColor;
-//    slider.valueViewColor = UIColor.whiteColor;
+    [slider setDidBeginTracking:^(Slider * _Nonnull slider) {
+        NSDictionary *event = @{
+                                @"target": slider.reactTag,
+                                @"value": [[NSNumber numberWithFloat: self._fraction] stringValue],
+                                @"name": @"tap",
+                                @"event": @"beginTracking"
+                                };
+        [self.bridge.eventDispatcher sendInputEventWithName:@"topChange" body:event];
+    }];
+    
+    [slider setDidEndTracking:^(Slider * _Nonnull slider) {
+        NSDictionary *event = @{
+                                @"target": slider.reactTag,
+                                @"value": [[NSNumber numberWithFloat: self._fraction] stringValue],
+                                @"name": @"tap",
+                                @"event": @"endTracking"
+                                };
+        [self.bridge.eventDispatcher sendInputEventWithName:@"topChange" body:event];
+    }];
     
     return slider;
 }
 
+
+//-(void)sliderValueChanged:(id)slider {
+//    NSLog(@"");
+//}
 
 RCT_CUSTOM_VIEW_PROPERTY(min, NSNumber *, Slider) {
     self._min = json;
@@ -45,6 +64,8 @@ RCT_CUSTOM_VIEW_PROPERTY(max, NSNumber *, Slider) {
 
     if (self._initialPosition != nil) {
         [view setAttributedTextForFraction:^NSAttributedString * _Nonnull(CGFloat fraction) {
+            self._fraction = fraction;
+            
             NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
             formatter.maximumIntegerDigits = 3;
             formatter.maximumFractionDigits = 0;

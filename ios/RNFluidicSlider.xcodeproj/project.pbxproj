@@ -7,9 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E54973603391C53F86ADECE /* Pods_RNFluidicSlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D832B95F36EFF7FB895D09 /* Pods_RNFluidicSlider.framework */; };
+		81D68AD12182E45C00D659DE /* fluid_slider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D68ACC2182E45000D659DE /* fluid_slider.framework */; };
+		81D68AD22182E45C00D659DE /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D68AD02182E45000D659DE /* pop.framework */; };
 		B3E7B58A1CC2AC0600A0062D /* RNFluidicSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNFluidicSlider.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		81D68ACB2182E45000D659DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81D68AC52182E45000D659DE /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A17E388635D65EDEFBB271F147A18552;
+			remoteInfo = "fluid-slider";
+		};
+		81D68ACD2182E45000D659DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81D68AC52182E45000D659DE /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5300DF025C15B5E95A2A6243B0A15506;
+			remoteInfo = "Pods-RNFluidicSlider";
+		};
+		81D68ACF2182E45000D659DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81D68AC52182E45000D659DE /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 332A80D3AA236C1EC150EE5A59F4592F;
+			remoteInfo = pop;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		58B511D91A9E6C8500147676 /* CopyFiles */ = {
@@ -27,6 +52,8 @@
 		134814201AA4EA6300B7C361 /* libRNFluidicSlider.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNFluidicSlider.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BA34C5A746ACF0A3F2CBFA0 /* Pods-RNFluidicSlider.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNFluidicSlider.release.xcconfig"; path = "Pods/Target Support Files/Pods-RNFluidicSlider/Pods-RNFluidicSlider.release.xcconfig"; sourceTree = "<group>"; };
 		62FB5A1E4E53FD7A5498DB3F /* Pods-RNFluidicSlider.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNFluidicSlider.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RNFluidicSlider/Pods-RNFluidicSlider.debug.xcconfig"; sourceTree = "<group>"; };
+		81D68AC32182E43B00D659DE /* fluid_slider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = fluid_slider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		81D68AC52182E45000D659DE /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNFluidicSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNFluidicSlider.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNFluidicSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFluidicSlider.m; sourceTree = "<group>"; };
 		C9D832B95F36EFF7FB895D09 /* Pods_RNFluidicSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RNFluidicSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,7 +64,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E54973603391C53F86ADECE /* Pods_RNFluidicSlider.framework in Frameworks */,
+				81D68AD12182E45C00D659DE /* fluid_slider.framework in Frameworks */,
+				81D68AD22182E45C00D659DE /* pop.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,9 +100,21 @@
 			);
 			sourceTree = "<group>";
 		};
+		81D68AC62182E45000D659DE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				81D68ACC2182E45000D659DE /* fluid_slider.framework */,
+				81D68ACE2182E45000D659DE /* Pods_RNFluidicSlider.framework */,
+				81D68AD02182E45000D659DE /* pop.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		D641AB0EE1AF3402EE4CD33C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				81D68AC52182E45000D659DE /* Pods.xcodeproj */,
+				81D68AC32182E43B00D659DE /* fluid_slider.framework */,
 				C9D832B95F36EFF7FB895D09 /* Pods_RNFluidicSlider.framework */,
 			);
 			name = Frameworks;
@@ -125,12 +165,42 @@
 			mainGroup = 58B511D21A9E6C8500147676;
 			productRefGroup = 58B511D21A9E6C8500147676;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 81D68AC62182E45000D659DE /* Products */;
+					ProjectRef = 81D68AC52182E45000D659DE /* Pods.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				58B511DA1A9E6C8500147676 /* RNFluidicSlider */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		81D68ACC2182E45000D659DE /* fluid_slider.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = fluid_slider.framework;
+			remoteRef = 81D68ACB2182E45000D659DE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		81D68ACE2182E45000D659DE /* Pods_RNFluidicSlider.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Pods_RNFluidicSlider.framework;
+			remoteRef = 81D68ACD2182E45000D659DE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		81D68AD02182E45000D659DE /* pop.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = pop.framework;
+			remoteRef = 81D68ACF2182E45000D659DE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		B5FB30F06F5A95C0EB87C014 /* [CP] Check Pods Manifest.lock */ = {

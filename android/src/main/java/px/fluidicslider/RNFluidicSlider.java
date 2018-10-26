@@ -21,6 +21,9 @@ import kotlin.jvm.functions.Function1;
 public class RNFluidicSlider extends ViewGroupManager<ViewGroup> {
 
     public static final String REACT_CLASS = "RNFluidicSlider";
+
+    private float _min;
+    private float _max;
     private float _position;
     private float _initialPosition;
 
@@ -36,6 +39,7 @@ public class RNFluidicSlider extends ViewGroupManager<ViewGroup> {
         final ConstraintLayout constraintLayout = (ConstraintLayout) reactContext.getCurrentActivity().getLayoutInflater().inflate(R.layout.slider, layout, false);
 
         FluidSlider slider = (FluidSlider) constraintLayout.getViewById(R.id.fluidSlider);
+        final FluidSlider finalSlider = slider;
 
         slider.setBeginTrackingListener(new Function0<Unit>() {
             @Override
@@ -60,6 +64,8 @@ public class RNFluidicSlider extends ViewGroupManager<ViewGroup> {
             public Unit invoke(Float pos) {
                 _position = pos;
 
+                finalSlider.setBubbleText(String.valueOf((int) (_min + ((_max - _min) * _position))));
+
                 return Unit.INSTANCE;
             }
         });
@@ -81,20 +87,32 @@ public class RNFluidicSlider extends ViewGroupManager<ViewGroup> {
 
     @ReactProp(name = "min")
     public void setMin(ConstraintLayout layout, int min) {
-        FluidSlider slider = (FluidSlider) layout.getChildAt(0);
+        _min = min;
+
+        FluidSlider slider = (FluidSlider) layout.getViewById(R.id.fluidSlider);
         slider.setStartText(String.valueOf(min));
+
+        if (_initialPosition != 0) {
+            slider.setPosition(_initialPosition);
+        }
     }
 
     @ReactProp(name = "max")
     public void setMax(ConstraintLayout layout, int max) {
-        FluidSlider slider = (FluidSlider) layout.getChildAt(0);
+        _max = max;
+
+        FluidSlider slider = (FluidSlider) layout.getViewById(R.id.fluidSlider);
         slider.setEndText(String.valueOf(max));
+
+        if (_initialPosition != 0) {
+            slider.setPosition(_initialPosition);
+        }
     }
 
 
     @ReactProp(name = "initialPosition")
     public void setInitialPosition(ConstraintLayout layout, float initialPosition) {
-        FluidSlider slider = (FluidSlider) layout.getChildAt(0);
+        FluidSlider slider = (FluidSlider) layout.getViewById(R.id.fluidSlider);
         slider.setPosition(initialPosition);
 
         _position = initialPosition;
@@ -104,25 +122,25 @@ public class RNFluidicSlider extends ViewGroupManager<ViewGroup> {
 
     @ReactProp(name = "barColor")
     public void setBarColor(ConstraintLayout layout, String barColor) {
-        FluidSlider slider = (FluidSlider) layout.getChildAt(0);
+        FluidSlider slider = (FluidSlider) layout.getViewById(R.id.fluidSlider);
         slider.setColorBar(Color.parseColor(barColor));
     }
 
     @ReactProp(name = "bubbleColor")
     public void setBubbleColor(ConstraintLayout layout, String bubbleColor) {
-        FluidSlider slider = (FluidSlider) layout.getChildAt(0);
+        FluidSlider slider = (FluidSlider) layout.getViewById(R.id.fluidSlider);
         slider.setColorBubble(Color.parseColor(bubbleColor));
     }
 
     @ReactProp(name = "barTextColor")
     public void setBarTextColor(ConstraintLayout layout, String barTextColor) {
-        FluidSlider slider = (FluidSlider) layout.getChildAt(0);
+        FluidSlider slider = (FluidSlider) layout.getViewById(R.id.fluidSlider);
         slider.setColorBarText(Color.parseColor(barTextColor));
     }
 
     @ReactProp(name = "bubbleTextColor")
     public void setBubbleTextColor(ConstraintLayout layout, String bubbleTextColor) {
-        FluidSlider slider = (FluidSlider) layout.getChildAt(0);
+        FluidSlider slider = (FluidSlider) layout.getViewById(R.id.fluidSlider);
         slider.setColorBubbleText(Color.parseColor(bubbleTextColor));
     }
 }

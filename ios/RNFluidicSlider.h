@@ -15,5 +15,7 @@
 @property (assign) UIColor *_barTextColor;
 @property (assign) UIColor *_bubbleTextColor;
 
+@property (assign) CGFloat _fraction;
+
 @end
   

@@ -6,7 +6,7 @@ target 'RNFluidicSlider' do
   use_frameworks!
 
   # Pods for RNFluidicSlider
-  pod 'fluid-slider' :git => 'https://github.com/prscX/photo-editor' :branch => 'objectivec'
+  pod 'fluid-slider', :git => 'https://github.com/prscX/fluid-slider', :branch => 'objectivec'
 
   post_install do |installer|
     installer.pods_project.targets.each do |target|

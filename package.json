@@ -1,6 +1,6 @@
 {
     "name": "react-native-fluidic-slider",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "React Native: Native Fluidic Slider",
     "main": "RNFluidicSlider.js",
     "repository": {

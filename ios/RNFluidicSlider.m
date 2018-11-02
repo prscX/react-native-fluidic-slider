@@ -11,10 +11,6 @@ RCT_EXPORT_MODULE()
 
 - (Slider *)view {
     Slider *slider = [[Slider alloc] init];
-//    [slider addTarget:self
-//                     action:@selector(sliderValueChanged:)
-//           forControlEvents:UIControlEventValueChanged];
-
     
     [slider setDidBeginTracking:^(Slider * _Nonnull slider) {
         NSDictionary *event = @{
@@ -40,10 +36,6 @@ RCT_EXPORT_MODULE()
 }
 
 
-//-(void)sliderValueChanged:(id)slider {
-//    NSLog(@"");
-//}
-
 RCT_CUSTOM_VIEW_PROPERTY(min, NSNumber *, Slider) {
     self._min = json;
 
@@ -59,7 +51,7 @@ RCT_CUSTOM_VIEW_PROPERTY(max, NSNumber *, Slider) {
     if (self._barTextColor != nil) {
         NSDictionary *attrs = @{ NSForegroundColorAttributeName : self._barTextColor };
         
-        [view setMaximumLabelAttributedText: [[NSMutableAttributedString alloc] initWithString: [self._min stringValue] attributes:attrs]];
+        [view setMaximumLabelAttributedText: [[NSMutableAttributedString alloc] initWithString: [self._max stringValue] attributes:attrs]];
     }
 
     if (self._initialPosition != nil) {
@@ -70,7 +62,9 @@ RCT_CUSTOM_VIEW_PROPERTY(max, NSNumber *, Slider) {
             formatter.maximumIntegerDigits = 3;
             formatter.maximumFractionDigits = 0;
             
-            NSNumber *value = [NSNumber numberWithFloat: fraction * [json integerValue]];
+            int pos = [self._min intValue] + ([self._max intValue] - [self._min intValue]) * fraction;
+            
+            NSNumber *value = [NSNumber numberWithFloat: pos];
             NSString *string = [formatter stringFromNumber: value];
             return [[NSMutableAttributedString alloc] initWithString:string];
         }];
@@ -84,12 +78,15 @@ RCT_CUSTOM_VIEW_PROPERTY(initialPosition, NSNumber *, Slider) {
     
     if (self._max != nil) {
         [view setAttributedTextForFraction:^NSAttributedString * _Nonnull(CGFloat fraction) {
+            self._fraction = fraction;
+
             NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
             formatter.maximumIntegerDigits = 3;
             formatter.maximumFractionDigits = 0;
             
             NSNumber *value = [NSNumber numberWithFloat: fraction * [json integerValue]];
             NSString *string = [formatter stringFromNumber: value];
+
             return [[NSMutableAttributedString alloc] initWithString:string];
         }];
         
@@ -120,6 +117,8 @@ RCT_CUSTOM_VIEW_PROPERTY(barTextColor, NSString *, Slider) {
 RCT_CUSTOM_VIEW_PROPERTY(bubbleTextColor, NSString *, Slider) {
     self._bubbleTextColor = json;
 }
+
+
 
 + (UIColor *) ColorFromHexCode:(NSString *)hexString {
     NSString *cleanString = [hexString stringByReplacingOccurrencesOfString:@"#" withString:@""];

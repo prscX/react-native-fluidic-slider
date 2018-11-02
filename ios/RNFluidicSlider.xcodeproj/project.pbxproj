@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		81D68AD12182E45C00D659DE /* fluid_slider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D68ACC2182E45000D659DE /* fluid_slider.framework */; };
 		81D68AD22182E45C00D659DE /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D68AD02182E45000D659DE /* pop.framework */; };
+		AC14DB3668019B7FF5AC38AA /* Pods_RNFluidicSlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D832B95F36EFF7FB895D09 /* Pods_RNFluidicSlider.framework */; };
 		B3E7B58A1CC2AC0600A0062D /* RNFluidicSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNFluidicSlider.m */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 			files = (
 				81D68AD12182E45C00D659DE /* fluid_slider.framework in Frameworks */,
 				81D68AD22182E45C00D659DE /* pop.framework in Frameworks */,
+				AC14DB3668019B7FF5AC38AA /* Pods_RNFluidicSlider.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

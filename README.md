@@ -93,7 +93,7 @@ import { RNFluidicSlider } from 'react-native-fluidic-slider'
 
 > **Note:**
 > * Initial Position: Sepcify initial position in fraction from 0 to 1
-> * beginTracking & endTracking: It will provide fraction value ranging from 0 to 1. Please use below formulate to calculate numerical value of selected position:
+> * beginTracking & endTracking: It will provide fraction value of position ranging from 0 to 1. Please use below formulate to calculate numerical value of selected position:
 > __min + ((min - max) * position)__
 
 ## ✨ Credits

@@ -82,14 +82,19 @@ import { RNFluidicSlider } from 'react-native-fluidic-slider'
 | ---------------------- | ------------------- | ------- | ------------------------------------------------ |
 | `min`     | `number`            |    `0`     | Specify min range value of the slider                 |
 | `max`     | `number`            |    `100`     | Specify max range value of the slider                 |
-| `initialPosition`     | `number`            |    `.5`     | Specify initial position of slider indicator                 |
+| `initialPosition`     | `number - 0 to 1`            |    `.5`     | Specify initial position of slider indicator                 |
 | `barColor`     | `string: HEX_COLOR`            |    `#6168e7`     | Specify bar color                 |
 | `bubbleColor`     | `string: HEX_COLOR`            |    `#FFFFFF`     | Specify bubble color                 |
 | `barTextColor`     | `string: HEX_COLOR`            |    `#FFFFFF`     | Specify bar text color                 |
 | `bubbleTextColor`     | `string: HEX_COLOR`            |    `#000000`     | Specify bubble text color                 |
-| `beginTracking`     | `func`            |         | Specify callback function for begin tracking                 |
-| `endTracking`     | `func`            |         | Specify callback function for end tracking                 |
+| `beginTracking`     | `func (position)`            |         | Specify callback function for begin tracking                 |
+| `endTracking`     | `func (position)`            |         | Specify callback function for end tracking                 |
 
+
+> **Note:**
+> * Initial Position: Sepcify initial position in fraction from 0 to 1
+> * beginTracking & endTracking: It will provide fraction value ranging from 0 to 1. Please use below formulate to calculate numerical value of selected position:
+> __min + ((min - max) * position)__
 
 ## ✨ Credits
 

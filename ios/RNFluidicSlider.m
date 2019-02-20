@@ -66,7 +66,11 @@ RCT_CUSTOM_VIEW_PROPERTY(max, NSNumber *, Slider) {
             
             NSNumber *value = [NSNumber numberWithFloat: pos];
             NSString *string = [formatter stringFromNumber: value];
-            return [[NSMutableAttributedString alloc] initWithString:string];
+            
+            UIFont *font = [UIFont fontWithName:@"OpenSans-SemiBold" size:[self._textSize doubleValue]];
+            UIColor *color = [RNFluidicSlider ColorFromHexCode: self._bubbleTextColor];
+            NSDictionary *attrs = @{NSForegroundColorAttributeName: color, NSFontAttributeName: font };
+            return [[NSMutableAttributedString alloc] initWithString:string attributes: attrs];
         }];
         
         view.fraction = [self._initialPosition floatValue];
@@ -107,7 +111,8 @@ RCT_CUSTOM_VIEW_PROPERTY(barTextColor, NSString *, Slider) {
     
     if (self._min != nil && self._max != nil) {
         UIColor *color = [RNFluidicSlider ColorFromHexCode: json];
-        NSDictionary *attrs = @{ NSForegroundColorAttributeName : color };
+        UIFont *font = [UIFont fontWithName:@"OpenSans-SemiBold" size:[self._textSize doubleValue]];
+        NSDictionary *attrs = @{ NSForegroundColorAttributeName : color, NSFontAttributeName: font };
         
         [view setMinimumLabelAttributedText: [[NSMutableAttributedString alloc] initWithString: [self._min stringValue] attributes:attrs]];
         [view setMaximumLabelAttributedText: [[NSMutableAttributedString alloc] initWithString: [self._max stringValue] attributes:attrs]];
@@ -116,6 +121,10 @@ RCT_CUSTOM_VIEW_PROPERTY(barTextColor, NSString *, Slider) {
 
 RCT_CUSTOM_VIEW_PROPERTY(bubbleTextColor, NSString *, Slider) {
     self._bubbleTextColor = json;
+}
+
+RCT_CUSTOM_VIEW_PROPERTY(textSize, NSNumber *, Slider) {
+    self._textSize = json;
 }
 
 
@@ -145,4 +154,3 @@ RCT_CUSTOM_VIEW_PROPERTY(bubbleTextColor, NSString *, Slider) {
 
 
 @end
-  

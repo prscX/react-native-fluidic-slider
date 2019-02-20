@@ -143,4 +143,10 @@ public class RNFluidicSlider extends ViewGroupManager<ViewGroup> {
         FluidSlider slider = (FluidSlider) layout.getViewById(R.id.fluidSlider);
         slider.setColorBubbleText(Color.parseColor(bubbleTextColor));
     }
+
+    @ReactProp(name = "textSize")
+    public void setTextSize(ConstraintLayout layout, int textSize) {
+        FluidSlider slider = (FluidSlider) layout.getViewById(R.id.fluidSlider);
+        slider.setTextSize(textSize);
+    }
 }

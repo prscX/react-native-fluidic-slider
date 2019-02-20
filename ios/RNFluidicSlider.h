@@ -12,6 +12,7 @@
 @property (assign) NSNumber *_initialPosition;
 @property (assign) NSNumber *_min;
 @property (assign) NSNumber *_max;
+@property (assign) NSNumber *_textSize;
 @property (assign) UIColor *_barTextColor;
 @property (assign) UIColor *_bubbleTextColor;
 

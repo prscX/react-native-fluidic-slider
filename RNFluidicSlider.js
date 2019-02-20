@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, ViewPropTypes, Platform } from "react-native";
+import { StyleSheet, ViewPropTypes, Platform, Dimensions} from "react-native";
 import PropTypes from "prop-types";
 
 import { requireNativeComponent } from "react-native";
@@ -21,7 +21,9 @@ class RNFluidicSlider extends Component {
     bubbleTextColor: PropTypes.string,
 
     beginTracking: PropTypes.func,
-    endTracking: PropTypes.func
+    endTracking: PropTypes.func,
+
+    textSize: PropTypes.number,
   };
 
   static defaultProps = {
@@ -33,7 +35,9 @@ class RNFluidicSlider extends Component {
     barColor: "#6168e7",
     bubbleColor: "#FFFFFF",
     barTextColor: "#FFFFFF",
-    bubbleTextColor: "#000000"
+    bubbleTextColor: "#000000",
+
+    textSize: 12,
   };
 
   _onChange = (event, position) => {
@@ -45,11 +49,16 @@ class RNFluidicSlider extends Component {
   };
 
   render() {
+    const { textSize } = this.props;
+    const { scale } = Dimensions.get('screen');
+    const scaledTextSize =
+      Platform.select({ ios: 1, android: scale }) * textSize;
     return (
       <FluidicSlider
         style={style.container}
         onChange={this._onChange}
         {...this.props}
+        textSize={scaledTextSize}
       />
     );
   }
